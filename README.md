@@ -1,1 +1,3 @@
-# mnnd004.github.io
+# Education
+# Experience
+$$ax^2 + bx + c = 0$$
