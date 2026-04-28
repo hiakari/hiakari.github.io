@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal academic portfolio for a wireless communications and signal processing student at Institute of Science Tokyo.">
+  <title>Minh Nguyen | Wireless Communications Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #d9dee3;
+      --paper: #fbfbf8;
+      --panel: #ffffff;
+      --blue: #245c9b;
+      --green: #2f7d62;
+      --red: #b4493f;
+      --gold: #b37b1e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: rgba(36, 92, 155, 0.45);
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      color: var(--blue);
+      text-decoration-color: currentColor;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 24px 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--blue);
+      font-size: 13px;
+      border-radius: 8px;
+      flex: 0 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(310px, 0.95fr);
+      gap: 44px;
+      align-items: center;
+      padding: 34px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: #3c4043;
+      font-size: 19px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 15px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      border-radius: 7px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .signal-panel {
+      position: relative;
+      min-height: 370px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(32, 33, 36, 0.055) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(32, 33, 36, 0.055) 1px, transparent 1px),
+        #f4f6f3;
+      background-size: 28px 28px;
+    }
+
+    .trace {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .metric-strip {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(217, 222, 227, 0.9);
+      border-radius: 7px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      padding: 46px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 760px;
+      color: #3c4043;
+      font-size: 18px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 305px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .project-card:hover {
+      color: var(--ink);
+      border-color: rgba(36, 92, 155, 0.55);
+      box-shadow: 0 16px 32px rgba(32, 33, 36, 0.08);
+      transform: translateY(-2px);
+      transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+    }
+
+    .project-visual {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      min-height: 76px;
+      margin-bottom: 18px;
+    }
+
+    .project-visual span {
+      border-radius: 3px;
+      background: #dce4ea;
+    }
+
+    .project-visual span:nth-child(3n) {
+      background: #94b6d8;
+    }
+
+    .project-visual span:nth-child(4n) {
+      background: #93bea8;
+    }
+
+    .project-visual span:nth-child(5n) {
+      background: #d7b56c;
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 22px;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #3c4043;
+      font-size: 12px;
+    }
+
+    .timeline,
+    .achievement-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .entry-title {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    .entry-meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .entry ul,
+    .achievement-list ul {
+      margin: 10px 0 0;
+      padding-left: 19px;
+      color: #3c4043;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-group {
+      min-height: 150px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .skill-group h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+    }
+
+    .skill-group p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        padding: 20px 16px 42px;
+      }
+
+      .topbar,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .section-head,
+      .entry {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 28px;
+        padding-top: 20px;
+      }
+
+      .project-grid,
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .signal-panel {
+        min-height: 310px;
+      }
+
+      .metric-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar" aria-label="Site header">
+      <div class="brand">
+        <div class="mark">MN</div>
+        <span>Minh Nguyen</span>
+      </div>
+      <nav aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="intro-title">
+      <div>
+      <p class="eyebrow">Wireless communications - Signal processing - Machine learning</p>
+        <h1 id="intro-title">Researching receivers for reliable next-generation links.</h1>
+        <p class="lead">B.Eng student in Transdisciplinary Science and Engineering at Institute of Science Tokyo, focused on OFDM, OTFS, channel modeling, and neural receivers for wireless systems.</p>
+        <div class="actions">
+          <a class="button" href="#projects">View projects</a>
+          <a class="button secondary" href="https://www.sciencedirect.com/science/article/abs/pii/S0378437123010075">Publication</a>
+        </div>
+      </div>
+      <aside class="signal-panel" aria-label="Signal processing visual summary">
+        <svg class="trace" viewBox="0 0 600 420" role="img" aria-label="Layered wireless signal traces">
+          <defs>
+            <linearGradient id="traceBlue" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#245c9b"/>
+              <stop offset="0.52" stop-color="#2f7d62"/>
+              <stop offset="1" stop-color="#b4493f"/>
+            </linearGradient>
+          </defs>
+          <path d="M20 225 C75 120, 115 315, 170 210 S265 105, 320 215 S415 320, 470 205 S555 95, 590 210" fill="none" stroke="url(#traceBlue)" stroke-width="7" stroke-linecap="round"/>
+          <path d="M30 155 C100 205, 140 95, 205 145 S320 265, 390 150 S505 35, 585 125" fill="none" stroke="#b37b1e" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+          <path d="M30 285 C120 235, 175 345, 250 292 S375 180, 455 275 S535 365, 585 300" fill="none" stroke="#202124" stroke-width="3" stroke-linecap="round" opacity="0.52"/>
+          <g fill="#ffffff" stroke="#202124" stroke-width="2">
+            <circle cx="92" cy="185" r="10"/>
+            <circle cx="206" cy="145" r="10"/>
+            <circle cx="322" cy="215" r="10"/>
+            <circle cx="456" cy="275" r="10"/>
+            <circle cx="535" cy="134" r="10"/>
+          </g>
+        </svg>
+        <div class="metric-strip">
+          <div class="metric">
+            <strong>3.69</strong>
+            <span>GPA</span>
+          </div>
+          <div class="metric">
+            <strong>2.5 dB</strong>
+            <span>Neural receiver SNR gain</span>
+          </div>
+          <div class="metric">
+            <strong>Top 7%</strong>
+            <span>Vietnam Physics Olympiad</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <h2 id="projects-title">Projects</h2>
+        <p>Selected work in link-level simulation, channel modeling, receiver learning, and performance analysis. Each project links to a detail page in docs.</p>
+      </div>
+      <div class="project-grid">
+        <a class="project-card" href="docs/otfs-ofdm.html">
+          <div class="project-visual" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <h3>Comparison of OTFS and OFDM over TDL Channels</h3>
+          <p>Implemented ISFFT-based OTFS modulation, LMMSE detection, OFDM baselines, and delay-Doppler TDL modeling.</p>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Sionna</span>
+          </div>
+        </a>
+        <a class="project-card" href="docs/nrx.html">
+          <div class="project-visual" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <h3>Neural Receiver for SIMO-OFDM</h3>
+          <p>CNN-based OFDM SIMO neural receiver with robustness, transfer learning, quantization, and pruning experiments.</p>
+          <div class="tags">
+            <span class="tag">CNN</span>
+            <span class="tag">OFDM</span>
+            <span class="tag">CDL</span>
+          </div>
+        </a>
+        <a class="project-card" href="docs/ofdm-mimo.html">
+          <div class="project-visual" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <h3>OFDM-MIMO</h3>
+          <p>A developing project area for multi-antenna OFDM simulation and receiver-side signal processing experiments.</p>
+          <div class="tags">
+            <span class="tag">MIMO</span>
+            <span class="tag">OFDM</span>
+            <span class="tag">Simulation</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-title">
+      <div class="section-head">
+        <h2 id="experience-title">Experience</h2>
+        <p>Research and technical communication experience across physics education, problem design, and applied modeling.</p>
+      </div>
+      <div class="timeline">
+        <article class="entry">
+          <div class="entry-meta">Student Researcher</div>
+          <div>
+            <h3 class="entry-title">xPhO Physics Club</h3>
+            <ul>
+              <li>Created Physics Olympiad problems for Road to Vietnam Physics Olympiad, a preparation program for high school students.</li>
+              <li>Published a paper applying classical mechanics to biological systems of bacteria.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="education-title">
+      <div class="section-head">
+        <h2 id="education-title">Education</h2>
+        <p>Engineering education grounded in communications, networks, research methods, and transdisciplinary problem solving.</p>
+      </div>
+      <article class="entry">
+        <div class="entry-meta">B.Eng - GPA 3.69</div>
+        <div>
+          <h3 class="entry-title">Institute of Science Tokyo</h3>
+          <p>Department of Transdisciplinary Science and Engineering, Global Scientist and Engineer Program.</p>
+          <ul>
+            <li>Relevant coursework: Communication Systems, Communication Networks, Fundamental of Scientific Research.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title">Skills</h2>
+        <p>Tools and foundations used across receiver design, modeling, and empirical evaluation.</p>
+      </div>
+      <div class="skills">
+        <div class="skill-group">
+          <h3>Wireless and 5G</h3>
+          <p>OFDM, OTFS, TDL/CDL channel models, SIMO/MIMO link-level simulation, BLER and BER evaluation.</p>
+        </div>
+        <div class="skill-group">
+          <h3>Math and Signal Processing</h3>
+          <p>Linear estimation theory, detection theory, channel-domain representations, delay-Doppler modeling.</p>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <p>Python, PyTorch, NumPy, Sionna, MATLAB, Simulink, data analysis workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" aria-labelledby="achievements-title">
+      <div class="section-head">
+        <h2 id="achievements-title">Achievements</h2>
+        <p>Academic awards, certifications, and publication record.</p>
+      </div>
+      <div class="achievement-list">
+        <article class="entry">
+          <div class="entry-meta">Publication</div>
+          <div>
+            <h3 class="entry-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0378437123010075">Physics paper in Physica A</a></h3>
+            <p>Applied classical mechanics to biological systems of bacteria.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-meta">Awards</div>
+          <div>
+            <h3 class="entry-title">MEXT Scholarship and Vietnam Physics Olympiad</h3>
+            <p>MEXT Scholarship for Undergraduates. Second Prize, top 7%, Vietnam Physics Olympiad.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-meta">Certifications</div>
+          <div>
+            <h3 class="entry-title">Google Data Analytics - MATLAB/Simulink Onramp</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <span>Minh Nguyen</span>
+      <span>Wireless communications portfolio</span>
+    </footer>
+  </main>
+</body>
+</html>
