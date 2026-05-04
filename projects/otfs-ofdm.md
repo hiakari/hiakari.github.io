@@ -8,4 +8,4 @@ report: https://github.com/hiakari/OTFS-Transceiver-In-PyTorch
 
 ## Overview
 
-A small simulation exploring OTFS, a so-called candidates for 6G waveform.
+A link-level simulation comparing OTFS and OFDM over time-varying TDL channels, with focus on delay-Doppler-domain modeling and receiver design.
