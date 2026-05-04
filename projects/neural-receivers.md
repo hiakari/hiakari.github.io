@@ -1,7 +1,7 @@
 ---
 title: Neural Receivers
 date: 2026-04-25
-summary: Exploring AI (Neural Receiver) for PHY layer
+summary: CNN/ResNet-based neural receiver for SIMO-OFDM link-level simulation with CDL channels and LDPC coding.
 code: https://github.com/hiakari/CNN-based-NRX
 report: assets/nrx.pdf
 ---
